@@ -10,5 +10,5 @@ function formatPerson(a) {
         return "TS Error";
     return `Hello, my name is ${name} and my age is ${age}`;
 }
-console.log(formatPerson(["John", "30"]));
+console.log(formatPerson(["John", 30]));
 //# sourceMappingURL=formatPerson.js.map
