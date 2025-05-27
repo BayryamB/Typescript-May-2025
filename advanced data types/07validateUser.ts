@@ -1,4 +1,4 @@
-type User = {
+type User1 = {
     id: number | string;
     username: string;
     passwordHash: string | string[];
