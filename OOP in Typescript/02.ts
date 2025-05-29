@@ -1,5 +1,4 @@
 
-
 class BankAccount {
   private balance: number;
 
