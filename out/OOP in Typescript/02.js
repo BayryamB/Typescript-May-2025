@@ -1,9 +1,4 @@
 "use strict";
-// Create a class BankAccount with a private property balance (number). Add methods:
-// · deposit(amount: number): void
-// · withdraw(amount: number): void
-// · getBalance(): number
-// Ensure that withdrawing more than the balance is not allowed.
 class BankAccount {
     balance;
     constructor(balance) {
