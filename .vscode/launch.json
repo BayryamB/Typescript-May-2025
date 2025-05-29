@@ -5,9 +5,9 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${fileDirname}/out/${fileBasenameNoExtension}.js",
+            "program": "${workspaceFolder}/out/${relativeFileDirname}/${fileBasenameNoExtension}.js",
             "preLaunchTask": "tsc: build - tsconfig.json",
-            "outFiles": ["${fileDirname}/out/**/*.js"],
+            "outFiles": ["${workspaceFolder}/out/**/*.js"],
             "sourceMaps": true
         }
     ]
