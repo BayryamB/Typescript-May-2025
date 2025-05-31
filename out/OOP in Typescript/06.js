@@ -1,11 +1,4 @@
 "use strict";
-// Create a class Employee with:
-// · public property name
-// · protected property position
-// · private property salary
-// Implement methods:
-// · getDetails – to return information about name and position (see format output)
-// · showSalary – to return information about salary (see format in output)
 class Employee {
     name;
     position;
