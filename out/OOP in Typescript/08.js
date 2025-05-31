@@ -1,9 +1,4 @@
 "use strict";
-// // Create a class Book with:
-// · readonly property title
-// · readonly property author
-// Once set through the constructor,
-// these values should not be changed.
 class Book {
     title;
     author;
@@ -14,4 +9,6 @@ class Book {
 }
 const book = new Book("1984", "George Orwell");
 console.log(`${book.title} by ${book.author}`);
+// book.title = "Brave New World";
+// book.author = "Terry Pratchet"
 //# sourceMappingURL=08.js.map
