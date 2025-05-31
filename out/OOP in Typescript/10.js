@@ -14,9 +14,9 @@ class UserOOP {
         this._username = newUsername;
     }
 }
-// const user1 = new UserOOP("Martin");
-// user1.username = "johnDoe";
-// console.log(user1.username);
 const user1 = new UserOOP("Martin");
-user1.username = "Do";
+user1.username = "johnDoe";
+console.log(user1.username);
+// const user1 = new UserOOP("Martin");
+// user1.username = "Do";
 //# sourceMappingURL=10.js.map

@@ -4,7 +4,7 @@ type User = {
 };
 type TaskStatus = "Logged" | "Started" | "InProgress" | "Done";
 
-type Task = {
+type Task1 = {
     status: TaskStatus;
     title: string;
     daysRequired: number;
@@ -12,7 +12,7 @@ type Task = {
     changeStatus(newStatus: TaskStatus): void;
 };
 
-function assignTask(user: User, task: Task) {
+function assignTask(user: User, task: Task1) {
     if (task.assignedTo == undefined) {
         task.assignedTo = user;
         console.log(`User ${user.username} assigned to task '${task.title}'`);
