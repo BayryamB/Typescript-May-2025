@@ -1,0 +1,99 @@
+TypeScript Decorator Argument List
+1. Class Decorator
+Applies to: Class constructor
+
+Arguments:
+
+constructor: Function
+
+Returns: void or a new constructor
+
+Use Cases:
+
+Extending classes
+
+Adding metadata
+
+Sealing/freezing classes
+
+2. Method Decorator
+Applies to: Class methods
+
+Arguments:
+
+target: Object (prototype or constructor)
+
+methodName: string
+
+descriptor: PropertyDescriptor
+
+Returns: void or modified PropertyDescriptor
+
+Use Cases:
+
+Logging
+
+Validation
+
+Throttling
+
+3. Property Decorator
+Applies to: Class properties
+
+Arguments:
+
+target: Object
+
+propertyName: string
+
+Returns: void
+
+Use Cases:
+
+Read-only enforcement
+
+Observables
+
+Metadata
+
+4. Accessor Decorator (Getter/Setter)
+Applies to: Getters/setters
+
+Arguments:
+
+target: Object
+
+propertyName: string
+
+descriptor: PropertyDescriptor
+
+Returns: void or modified PropertyDescriptor
+
+Use Cases:
+
+Validation
+
+Lazy-loading
+
+Logging
+
+5. Parameter Decorator
+Applies to: Method parameters
+
+Arguments:
+
+target: Object
+
+methodName: string
+
+parameterIndex: number
+
+Returns: void
+
+Use Cases:
+
+Dependency Injection
+
+Validation
+
+Logging
