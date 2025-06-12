@@ -1,4 +1,8 @@
-function log(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+function logger(
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor
+) {
     console.log("Property key:", propertyKey);
     console.log("Descriptor value:", descriptor.value);
 }
@@ -12,7 +16,7 @@ class Car {
     }
 
     // A method that can be decorated (e.g., with @log or @delay)
-    @log
+    @logger
     accelerate(speedIncrease: number): void {
         this._speed += speedIncrease;
         console.log(`${this._model} accelerated to ${this._speed} km/h`);

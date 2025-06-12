@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-function log(target, propertyKey, descriptor) {
+function logger(target, propertyKey, descriptor) {
     console.log("Property key:", propertyKey);
     console.log("Descriptor value:", descriptor.value);
 }
@@ -42,7 +42,7 @@ class Car {
     }
 }
 __decorate([
-    log,
+    logger,
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
