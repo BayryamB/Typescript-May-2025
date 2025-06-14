@@ -5,9 +5,7 @@ export function decorator1<T extends new (...args: any[])=> {}>(constructor: T) 
 }
 export function decorator2() {}
 export function decorator3() {}
-export function decorator4<T extends abstract new (...args: any[]) => {}>(
-    constructor: T
-) {
+export function decorator4<T extends abstract new (...args: any[]) => {}>(constructor: T) {
     abstract class extendedPartialMessageEncoder extends constructor {
         public static forbiddenSymbols: string[] = ['_', ',', '.', '!', '?', '-', ';', ' ', '"', '\''];
     }

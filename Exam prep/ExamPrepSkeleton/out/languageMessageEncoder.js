@@ -8,12 +8,18 @@ class LanguageMessageEncoder extends partialMessageEncoder_1.PartialMessageEncod
     constructor(language, cipher) {
         super(language, cipher);
     }
+    stripForbiddenSymbols(message) {
+        let forbiddenSymbols = partialMessageEncoder_1.PartialMessageEncoder.forbiddenSymbols;
+        forbiddenSymbols.forEach((x) => (message = message.replaceAll(x, "")));
+        return message;
+    }
     encodeMessage(secretMessage) {
         if (typeof secretMessage !== "string" || secretMessage.length === 0) {
             return "No message.";
         }
         const strippedMessage = this.stripForbiddenSymbols(secretMessage);
-        if (!this.language.isCompatibleToCharset(strippedMessage)) {
+        const isCompatible = this.language.isCompatibleToCharset(strippedMessage);
+        if (!isCompatible) {
             return "Message not compatible.";
         }
         let encodedMessage = this.cipher.encipher(strippedMessage);
@@ -25,10 +31,12 @@ class LanguageMessageEncoder extends partialMessageEncoder_1.PartialMessageEncod
             return "No message.";
         }
         const strippedMessage = this.stripForbiddenSymbols(secretMessage);
-        if (!this.language.isCompatibleToCharset(strippedMessage)) {
+        const isCompatible = this.language.isCompatibleToCharset(strippedMessage);
+        console.log(isCompatible);
+        if (!isCompatible) {
             return "Message not compatible.";
         }
-        let decodedMessage = this.cipher.decipher(secretMessage);
+        let decodedMessage = this.cipher.encipher(strippedMessage);
         this.decodedCount += strippedMessage.length;
         return decodedMessage;
     }
@@ -49,11 +57,6 @@ class LanguageMessageEncoder extends partialMessageEncoder_1.PartialMessageEncod
             }
         }
         return `Total processed characters count: ${totalChars}`;
-    }
-    stripForbiddenSymbols(message) {
-        let forbiddenSymbols = partialMessageEncoder_1.PartialMessageEncoder.forbiddenSymbols;
-        forbiddenSymbols.forEach((x) => (message = message.replaceAll(x, "")));
-        return message;
     }
 }
 exports.LanguageMessageEncoder = LanguageMessageEncoder;

@@ -84,13 +84,13 @@ let encodedMessage2 = encoder.encodeMessage("in cryptography, a 'cipher' is an a
 console.log(encodedMessage2);
 let decodedMessage2 = encoder.decodeMessage(encodedMessage2);
 console.log(decodedMessage2);
-console.log(encoder.totalProcessedCharacters("Both"));
-let encodedMessage3 = encoder.encodeMessage("_test;b1c2");
+console.log(encoder.totalProcessedCharacters('Both'));
+let encodedMessage3 = encoder.encodeMessage('_test;b1c2');
 console.log(encodedMessage3);
-let encodedMessage4 = encoder.encodeMessage("_test;b-c");
+let encodedMessage4 = encoder.encodeMessage('_test;b-c');
 console.log(encodedMessage4);
 let decodedMessage3 = encoder.decodeMessage('"hello" he said');
 console.log(decodedMessage3);
-console.log(encoder.totalProcessedCharacters("Decoded"));
+console.log(encoder.totalProcessedCharacters('Decoded'));
 console.log(partialMessageEncoder_1.PartialMessageEncoder.forbiddenSymbols);
 //# sourceMappingURL=index.js.map

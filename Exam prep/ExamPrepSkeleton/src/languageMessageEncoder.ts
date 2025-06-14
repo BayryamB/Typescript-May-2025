@@ -17,12 +17,21 @@ export class LanguageMessageEncoder<
         super(language, cipher);
     }
 
+    protected stripForbiddenSymbols(message: string): string {
+        let forbiddenSymbols = PartialMessageEncoder.forbiddenSymbols;
+        forbiddenSymbols.forEach((x) => (message = message.replaceAll(x, "")));
+        return message;
+    }
+
     public encodeMessage(secretMessage: unknown): string {
         if (typeof secretMessage !== "string" || secretMessage.length === 0) {
             return "No message.";
         }
         const strippedMessage = this.stripForbiddenSymbols(secretMessage);
-        if (!this.language.isCompatibleToCharset(strippedMessage)) {
+
+        const isCompatible = this.language.isCompatibleToCharset(strippedMessage);
+        
+        if (!isCompatible) {
             return "Message not compatible.";
         }
         let encodedMessage = this.cipher.encipher(strippedMessage);
@@ -35,10 +44,13 @@ export class LanguageMessageEncoder<
             return "No message.";
         }
         const strippedMessage = this.stripForbiddenSymbols(secretMessage);
-        if (!this.language.isCompatibleToCharset(strippedMessage)) {
+        const isCompatible = this.language.isCompatibleToCharset(strippedMessage);
+        console.log(isCompatible);
+        
+        if (!isCompatible) {
             return "Message not compatible.";
         }
-        let decodedMessage = this.cipher.decipher(secretMessage);
+        let decodedMessage = this.cipher.encipher(strippedMessage);
         this.decodedCount += strippedMessage.length;
         return decodedMessage;
     }
@@ -60,9 +72,5 @@ export class LanguageMessageEncoder<
         }
         return `Total processed characters count: ${totalChars}`;
     }
-    protected stripForbiddenSymbols(message: string): string {
-        let forbiddenSymbols = PartialMessageEncoder.forbiddenSymbols;
-        forbiddenSymbols.forEach((x) => (message = message.replaceAll(x, "")));
-        return message;
-    }
+    
 }

@@ -91,28 +91,22 @@ import { DNACodeLanguage } from "./dnaCodeLanguage";
 
 let lowercaseCharsLanguage = new LowercaseCharactersOnlyLanguage();
 let caesarCipher = new CaesarCipher(lowercaseCharsLanguage);
-let encoder = new LanguageMessageEncoder<
-    LowercaseCharactersOnlyLanguage,
-    CaesarCipher<LowercaseCharactersOnlyLanguage>
->(lowercaseCharsLanguage, caesarCipher);
-
+let encoder = new LanguageMessageEncoder<LowercaseCharactersOnlyLanguage,
+CaesarCipher<LowercaseCharactersOnlyLanguage>>(lowercaseCharsLanguage, caesarCipher);
 let encodedMessage = encoder.encodeMessage('there is no "spoon"');
 console.log(encodedMessage);
 let decodedMessage = encoder.decodeMessage(encodedMessage);
 console.log(decodedMessage);
-let encodedMessage2 = encoder.encodeMessage(
-    "in cryptography, a 'cipher' is an algorithm for performing encryption or decryption - a series of well-defined steps that can be followed as a procedure."
-);
+let encodedMessage2 = encoder.encodeMessage("in cryptography, a 'cipher' is an algorithm for performing encryption or decryption - a series of well-defined steps that can be followed as a procedure.");
 console.log(encodedMessage2);
 let decodedMessage2 = encoder.decodeMessage(encodedMessage2);
 console.log(decodedMessage2);
-console.log(encoder.totalProcessedCharacters("Both"));
-
-let encodedMessage3 = encoder.encodeMessage("_test;b1c2");
+console.log(encoder.totalProcessedCharacters('Both'));
+let encodedMessage3 = encoder.encodeMessage('_test;b1c2');
 console.log(encodedMessage3);
-let encodedMessage4 = encoder.encodeMessage("_test;b-c");
+let encodedMessage4 = encoder.encodeMessage('_test;b-c');
 console.log(encodedMessage4);
 let decodedMessage3 = encoder.decodeMessage('"hello" he said');
 console.log(decodedMessage3);
-console.log(encoder.totalProcessedCharacters("Decoded"));
+console.log(encoder.totalProcessedCharacters('Decoded'));
 console.log(PartialMessageEncoder.forbiddenSymbols);
