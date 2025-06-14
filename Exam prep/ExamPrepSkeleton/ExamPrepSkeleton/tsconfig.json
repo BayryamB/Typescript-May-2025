@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
-        "target": "esnext", // ECMAScript target version
-        "module": "esnext", // module code generation
+        "target": "ESNext", // ECMAScript target version
+        "module": "nodenext", // module code generation
         "sourceMap": true, // Generates corresponding .map file
         "strict": true, // strict type-checking options
         "outDir": "out", // redirect output to the directory.
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "moduleResolution": "nodenext"
     }
 }
