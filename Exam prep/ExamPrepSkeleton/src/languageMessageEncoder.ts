@@ -10,14 +10,14 @@ export class LanguageMessageEncoder<
     extends PartialMessageEncoder
     implements MessageEncoder
 {
-    private encodedCount: number = 0;
-    private decodedCount: number = 0;
+    private encodedCount = 0;
+    private decodedCount = 0;
 
     constructor(language: Tlanguage, cipher: TCipher) {
         super(language, cipher);
     }
 
-    public encodeMessage(secretMessage: string): string {
+    public encodeMessage(secretMessage: unknown): string {
         if (typeof secretMessage !== "string" || secretMessage.length === 0) {
             return "No message.";
         }
@@ -25,11 +25,12 @@ export class LanguageMessageEncoder<
         if (!this.language.isCompatibleToCharset(strippedMessage)) {
             return "Message not compatible.";
         }
+        let encodedMessage = this.cipher.encipher(strippedMessage);
         this.encodedCount += strippedMessage.length;
-        return this.encodeMessage(strippedMessage);
+        return encodedMessage;
     }
 
-    public decodeMessage(secretMessage: string): string {
+    public decodeMessage(secretMessage: unknown): string {
         if (typeof secretMessage !== "string" || secretMessage.length === 0) {
             return "No message.";
         }
@@ -37,22 +38,31 @@ export class LanguageMessageEncoder<
         if (!this.language.isCompatibleToCharset(strippedMessage)) {
             return "Message not compatible.";
         }
+        let decodedMessage = this.cipher.decipher(secretMessage);
         this.decodedCount += strippedMessage.length;
-        return this.decodeMessage(strippedMessage);
+        return decodedMessage;
     }
-
-    public totalProcessedCharacters(type: string): string {
-        let msgProcessedChars = "";
+    public totalProcessedCharacters(type: ProcessedCharacters): string {
+        let totalChars = 0;
         switch (type) {
-            case "Encoded":
-                msgProcessedChars = this.encodedCount.toString();
-            case "Decoded":
-                msgProcessedChars = this.decodedCount.toString();
-            case "Both":
-                msgProcessedChars = (
-                    this.encodedCount + this.decodedCount
-                ).toString();
+            case "Encoded": {
+                totalChars = this.encodedCount;
+                break;
+            }
+            case "Decoded": {
+                totalChars = this.decodedCount;
+                break;
+            }
+            case "Both": {
+                totalChars = this.encodedCount + this.decodedCount;
+                break;
+            }
         }
-        return msgProcessedChars;
+        return `Total processed characters count: ${totalChars}`;
+    }
+    protected stripForbiddenSymbols(message: string): string {
+        let forbiddenSymbols = PartialMessageEncoder.forbiddenSymbols;
+        forbiddenSymbols.forEach((x) => (message = message.replaceAll(x, "")));
+        return message;
     }
 }

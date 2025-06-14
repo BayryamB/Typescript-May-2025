@@ -2,7 +2,7 @@
 import { decorator1, decorator2, decorator3 } from "../../decorators";
 import { Cipher } from "../cipher";
 
-// @decorator1
+@decorator1
 export class CaesarCipher<
     T extends {
         charset: Set<string>;
